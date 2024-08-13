@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Stack, StyledEngineProvider, ThemeProvider } from "@mui/material";
+import Body from "./components/Body/Body";
+import theme from "./theme";
+import { Provider } from "react-redux";
+import store from "./app/store";
+import Layout from "./Layout";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StyledEngineProvider injectFirst>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <Stack className="App" height="100vh" justifyContent="space-between">
+            <Layout>
+              <Body />
+            </Layout>
+          </Stack>
+        </ThemeProvider>
+      </Provider>
+    </StyledEngineProvider>
   );
 }
 
