@@ -32,7 +32,12 @@ const Search = () => {
             size="small"
             fullWidth={true}
           />
-          <Button variant="contained" size="large" type="submit">
+          <Button
+            variant="contained"
+            size="large"
+            type="submit"
+            disabled={searchStatus === RequestStatus.LOADING}
+          >
             Искать
           </Button>
         </Stack>
